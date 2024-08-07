@@ -1,10 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import * as Sentry from '@sentry/react';
 import './index.css';
 
 import App from './App';
-import { getImage } from './assets';
 import { getChannelListOptions } from './channelListOptions';
 import { ThemeContextProvider } from './context';
 import { UserResponse } from 'stream-chat';
@@ -24,7 +22,6 @@ const channelListOptions = getChannelListOptions(!!noChannelNameFilter, user);
 const userToConnect: UserResponse<StreamChatGenerics> = {
   id: user!,
   name: skipNameImageSet ? undefined : user!,
-  image: skipNameImageSet ? undefined : getImage(user!),
   language: 'en',
   privacy_settings: {
     typing_indicators: {
