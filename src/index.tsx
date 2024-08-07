@@ -14,14 +14,11 @@ const apiKey = process.env.REACT_APP_STREAM_KEY || '8br4watad788';
 const user = process.env.REACT_APP_USER_ID || 'leia_organa';
 const userToken = process.env.REACT_APP_USER_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibGVpYV9vcmdhbmEifQ.IzwBuaYwX5dRvnDDnJN2AyW3wwfYwgQm3w-1RD4BLPU';
 const targetOrigin = (process.env.REACT_APP_TARGET_ORIGIN as string);
+const jobId = urlParams.get('job_id')
 
-const noChannelNameFilter = urlParams.get('no_channel_name_filter') || true;
-const skipNameImageSet = urlParams.get('skip_name_image_set') || false;
-
-const channelListOptions = getChannelListOptions(!!noChannelNameFilter, user);
 const userToConnect: UserResponse<StreamChatGenerics> = {
   id: user!,
-  name: skipNameImageSet ? undefined : user!,
+  name: user!,
   language: 'en',
   privacy_settings: {
     typing_indicators: {
@@ -40,7 +37,17 @@ root.render(
         userToConnect={userToConnect}
         userToken={userToken}
         targetOrigin={targetOrigin!}
-        channelListOptions={channelListOptions}
+        channelListOptions={{
+          options: {},
+          filters: {
+            type: 'messaging',
+            // has_unread: true,
+          },
+          sort: {
+            last_message_at: -1,
+            updated_at: -1,
+          }
+        }}
       />
     </ThemeContextProvider>
   </React.StrictMode>,

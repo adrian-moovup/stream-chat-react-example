@@ -51,24 +51,17 @@ const WrappedEmojiPicker = () => {
   return <EmojiPicker pickerProps={{ theme }} />;
 };
 
-interface CustomMessage {
-  dialog_type: string,
-  dialog_id: string,
-  action?: string,
-}
-
 const CustomMessage = () => {
-  const { message} = useMessageContext();
+  const { message} = useMessageContext<StreamChatGenerics>();
   const { sendMessage, editMessage, updateMessage } = useChannelActionContext()
-  const dialogMessage = message as unknown as CustomMessage;
   const messageId = message.id;
-  if (dialogMessage && dialogMessage.dialog_type === 'accept_reject') {
+  if (message && message.dialog_type === 'accept_reject') {
     return<MessageSimple renderText={() => {
       return (<>
         <p>Do you want to accept or reject this action? </p>
-        <p>ID: {dialogMessage.dialog_id}</p>
-        {dialogMessage.action && <p>Action: {dialogMessage.action.toUpperCase()}</p>}
-        {!dialogMessage.action && <div>
+        <p>ID: {message.dialog_id}</p>
+        {message.action && <p>Action: {message.action.toUpperCase()}</p>}
+        {!message.action && <div>
           <button onClick={async () => {
             console.log(await editMessage({
               id: messageId,
@@ -78,9 +71,9 @@ const CustomMessage = () => {
               action: 'accepted'
             }))
             console.log(await sendMessage({
-              text: `Accepted ${dialogMessage.dialog_id}`,
+              text: `Accepted ${message.dialog_id}`,
             }, {
-              'dialog_id': dialogMessage.dialog_id,
+              'dialog_id': message.dialog_id,
             }))
           }}>Accept</button>&nbsp;
           <button onClick={async () => {
@@ -92,9 +85,9 @@ const CustomMessage = () => {
               action: 'rejected'
             }))
             console.log(await sendMessage({
-              text: `Rejected ${dialogMessage.dialog_id}`,
+              text: `Rejected ${message.dialog_id}`,
             }, {
-              'dialog_id': dialogMessage.dialog_id,
+              'dialog_id': message.dialog_id,
             }))
           }}>Reject</button>
         </div>}

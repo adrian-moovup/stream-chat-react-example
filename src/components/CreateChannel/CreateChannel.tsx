@@ -22,6 +22,7 @@ const UserResult = ({ user }: { user: UserResponse<StreamChatGenerics> }) => (
 type Props = {
   onClose: () => void;
   toggleMobile: () => void;
+  jobId?: string,
 };
 
 const CreateChannel = (props: Props) => {
