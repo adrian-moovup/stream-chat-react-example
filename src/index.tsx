@@ -34,6 +34,7 @@ root.render(
     <ThemeContextProvider targetOrigin={targetOrigin}>
       <App
         apiKey={apiKey!}
+        jobId={jobId || undefined}
         userToConnect={userToConnect}
         userToken={userToken}
         targetOrigin={targetOrigin!}
@@ -41,6 +42,7 @@ root.render(
           options: {},
           filters: {
             type: 'messaging',
+            job_id: jobId,
             // has_unread: true,
           },
           sort: {

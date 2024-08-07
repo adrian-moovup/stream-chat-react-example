@@ -35,6 +35,7 @@ init({ data });
 
 type AppProps = {
   apiKey: string;
+  jobId?: string;
   userToConnect: { id: string; name?: string; image?: string };
   userToken: string | undefined;
   targetOrigin: string;
@@ -153,7 +154,7 @@ const App = (props: AppProps) => {
         enrichURLForPreview
       >
         {isCreating && (
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} />
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId} />
         )}
         <GiphyContextProvider>
           <ChannelInner theme={themeClassName} toggleMobile={toggleMobile} />

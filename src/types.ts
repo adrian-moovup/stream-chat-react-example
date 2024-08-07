@@ -1,7 +1,9 @@
 import type { LiteralStringForUnion } from 'stream-chat';
 
 export type AttachmentType = {};
-export type ChannelType = {};
+export type ChannelType = {
+  job_id?: string
+};
 export type CommandType = LiteralStringForUnion;
 export type EventType = {};
 export type MessageType = {

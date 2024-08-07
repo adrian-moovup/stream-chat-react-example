@@ -100,8 +100,11 @@ const CreateChannel = (props: Props) => {
 
     if (!selectedUsersIds.length || !client.userID) return;
 
-    const conversation = client.channel('messaging', {
+    const channelId = [props.jobId, ...selectedUsersIds, client.userID].join('_');
+
+    const conversation = client.channel('messaging', channelId, {
       members: [...selectedUsersIds, client.userID],
+      job_id: props.jobId,
     });
 
     await conversation.watch();
