@@ -146,18 +146,21 @@ const App = (props: AppProps) => {
         Message={CustomMessage}
         maxNumberOfFiles={10}
         multipleUploads={true}
-        SendButton={props => <><SendButton {...props } /><CustomSendButton /></>}
+        SendButton={props => <><SendButton {...props} /><CustomSendButton/></>}
         ThreadHeader={MessagingThreadHeader}
         TypingIndicator={() => null}
         EmojiPicker={WrappedEmojiPicker}
         emojiSearchIndex={SearchIndex}
         enrichURLForPreview
+        EmptyPlaceholder={
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId}/>
+        }
       >
         {isCreating && (
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId} />
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId}/>
         )}
         <GiphyContextProvider>
-          <ChannelInner theme={themeClassName} toggleMobile={toggleMobile} />
+          <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>
         </GiphyContextProvider>
       </Channel>
     </Chat>

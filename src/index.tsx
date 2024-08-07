@@ -42,7 +42,7 @@ root.render(
           options: {},
           filters: {
             type: 'messaging',
-            job_id: jobId,
+            job_id: jobId || undefined,
             // has_unread: true,
           },
           sort: {
