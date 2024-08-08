@@ -3,12 +3,13 @@ import { ChannelList, ChannelListProps } from 'stream-chat-react';
 
 import { MessagingChannelListHeader, MessagingChannelPreview } from '../index';
 import { useThemeContext } from '../../context';
+import { StreamChatGenerics } from '../../types';
 
 type MessagingSidebarProps = {
   channelListOptions: {
-    filters: ChannelListProps['filters'];
-    sort: ChannelListProps['sort'];
-    options: ChannelListProps['options'];
+    filters: ChannelListProps<StreamChatGenerics>['filters'];
+    sort: ChannelListProps<StreamChatGenerics>['sort'];
+    options: ChannelListProps<StreamChatGenerics>['options'];
   };
   onClick: MouseEventHandler;
   onCreateChannel: () => void;
@@ -32,7 +33,9 @@ const MessagingSidebar = ({
       <MessagingChannelListHeader onCreateChannel={onCreateChannel} />
       <ChannelList
         {...channelListOptions}
-        Preview={(props) => <MessagingChannelPreview {...props} onClick={onPreviewSelect} />}
+        Preview={(props) => {
+          return <MessagingChannelPreview {...props} onClick={onPreviewSelect} />
+        }}
       />
     </div>
   );

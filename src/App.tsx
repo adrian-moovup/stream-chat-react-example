@@ -120,7 +120,7 @@ const CustomSendButton = () => {
 };
 
 const App = (props: AppProps) => {
-  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions } = props;
+  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, jobId } = props;
   const [isCreating, setIsCreating] = useState(false);
 
   const chatClient = useConnectUser<StreamChatGenerics>(apiKey, userToConnect, userToken);
@@ -153,11 +153,11 @@ const App = (props: AppProps) => {
         emojiSearchIndex={SearchIndex}
         enrichURLForPreview
         EmptyPlaceholder={
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId}/>
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={jobId}/>
         }
       >
         {isCreating && (
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={props.jobId}/>
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={jobId}/>
         )}
         <GiphyContextProvider>
           <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>
