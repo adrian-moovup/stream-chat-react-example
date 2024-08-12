@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useChannelStateContext, useChatContext } from 'stream-chat-react';
 import './MessagingChannelHeader.css';
 
-import { TypingIndicator } from '../TypingIndicator/TypingIndicator';
+// import { TypingIndicator } from '../TypingIndicator/TypingIndicator';
 import { ChannelInfoIcon, ChannelSaveIcon, HamburgerIcon } from '../../assets';
 import { AvatarGroup } from '../';
 
@@ -82,11 +82,12 @@ const MessagingChannelHeader = (props: Props) => {
       ) : (
         <EditHeader />
       )}
-      <div className='messaging__channel-header__right'>
-        <TypingIndicator />
-        {channelName !== 'Social Demo' &&
-          (!isEditing ? <ChannelInfoIcon {...{ isEditing, setIsEditing }} /> : <ChannelSaveIcon />)}
-      </div>
+      {/* Edit channel title */}
+      {/*<div className='messaging__channel-header__right'>*/}
+      {/*  <TypingIndicator />*/}
+      {/*  {channelName !== 'Social Demo' &&*/}
+      {/*    (!isEditing ? <ChannelInfoIcon {...{ isEditing, setIsEditing }} /> : <ChannelSaveIcon />)}*/}
+      {/*</div>*/}
     </div>
   );
 };

@@ -1,17 +1,17 @@
 import React from 'react';
 import { Avatar, useChatContext } from 'stream-chat-react';
 
-import { CreateChannelIcon } from '../../assets';
+// import { CreateChannelIcon } from '../../assets';
 import streamLogo from '../../assets/ProfilePic_LogoMark_GrdntOnWt.png';
 
 import type { StreamChatGenerics } from '../../types';
 
-type Props = {
-  onCreateChannel?: () => void;
-};
+// type Props = {
+//   onCreateChannel?: () => void;
+// };
 
-const MessagingChannelListHeader = React.memo((props: Props) => {
-  const { onCreateChannel } = props;
+const MessagingChannelListHeader = React.memo(() => {
+  // const { onCreateChannel } = props;
 
   const { client } = useChatContext<StreamChatGenerics>();
 
@@ -21,12 +21,13 @@ const MessagingChannelListHeader = React.memo((props: Props) => {
       <div className='messaging__channel-list__header'>
         <Avatar image={image} name={name} />
         <div className={`messaging__channel-list__header__name`}>{name || id}</div>
-        <button
-          className={`messaging__channel-list__header__button`}
-          onClick={onCreateChannel}
-        >
-          <CreateChannelIcon />
-        </button>
+        {/* Create channel button */}
+        {/*<button*/}
+        {/*  className={`messaging__channel-list__header__button`}*/}
+        {/*  onClick={onCreateChannel}*/}
+        {/*>*/}
+        {/*  <CreateChannelIcon />*/}
+        {/*</button>*/}
       </div>
   );
 });
