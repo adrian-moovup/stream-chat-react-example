@@ -43,6 +43,7 @@ root.render(
           filters: {
             type: 'messaging',
             job_id: jobId || undefined,
+            members: { $in: [user!] },
             // has_unread: true,
           },
           sort: {
