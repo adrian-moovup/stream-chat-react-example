@@ -19,7 +19,7 @@ type MessagingSidebarProps = {
 const MessagingSidebar = ({
   channelListOptions,
   onClick,
-  onCreateChannel,
+  // onCreateChannel,
   onPreviewSelect,
 }: MessagingSidebarProps) => {
   const { themeClassName } = useThemeContext();
@@ -30,7 +30,8 @@ const MessagingSidebar = ({
       id='mobile-channel-list'
       onClick={onClick}
     >
-      <MessagingChannelListHeader onCreateChannel={onCreateChannel} />
+      {/*<MessagingChannelListHeader onCreateChannel={onCreateChannel} />*/}
+      <MessagingChannelListHeader />
       <ChannelList
         {...channelListOptions}
         Preview={(props) => {

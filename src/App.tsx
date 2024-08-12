@@ -3,9 +3,10 @@ import type { ChannelFilters, ChannelOptions, ChannelSort } from 'stream-chat';
 import {
   Channel,
   Chat,
-  DefaultStreamChatGenerics,
+  // DefaultStreamChatGenerics,
   MessageSimple,
-  StreamMessage, useChannelActionContext,
+  // StreamMessage,
+  useChannelActionContext,
   useMessageContext
 } from 'stream-chat-react';
 import { EmojiPicker } from 'stream-chat-react/emojis';
@@ -29,7 +30,7 @@ import { GiphyContextProvider, useThemeContext } from './context';
 import { useConnectUser, useChecklist, useMobileView, useUpdateAppHeightOnResize } from './hooks';
 
 import type { StreamChatGenerics } from './types';
-import { SendIcon } from './assets';
+// import { SendIcon } from './assets';
 
 init({ data });
 
@@ -54,7 +55,8 @@ const WrappedEmojiPicker = () => {
 
 const CustomMessage = () => {
   const { message} = useMessageContext<StreamChatGenerics>();
-  const { sendMessage, editMessage, updateMessage } = useChannelActionContext()
+  // const { sendMessage, editMessage, updateMessage } = useChannelActionContext()
+  const { sendMessage, editMessage } = useChannelActionContext()
   const messageId = message.id;
   if (message && message.dialog_type === 'accept_reject') {
     return<MessageSimple renderText={() => {
@@ -98,26 +100,27 @@ const CustomMessage = () => {
   return <MessageSimple />
 }
 
-const CustomSendButton = () => {
-  const { sendMessage } = useChannelActionContext()
-  const sendCustomMessage = () => {
-    sendMessage({
-      text: 'Do you want to accept or reject this action?',
-    }, {
-      'dialog_type': 'accept_reject',
-      'dialog_id': Math.random().toString().slice(2),
-    })
-  }
-  return (
-    <button
-      className='str-chat__send-button'
-      onClick={sendCustomMessage}
-      type='button'
-    >
-      <SendIcon/>
-    </button>
-  )
-};
+// For testing custom message
+// const CustomSendButton = () => {
+//   const { sendMessage } = useChannelActionContext()
+//   const sendCustomMessage = () => {
+//     sendMessage({
+//       text: 'Do you want to accept or reject this action?',
+//     }, {
+//       'dialog_type': 'accept_reject',
+//       'dialog_id': Math.random().toString().slice(2),
+//     })
+//   }
+//   return (
+//     <button
+//       className='str-chat__send-button'
+//       onClick={sendCustomMessage}
+//       type='button'
+//     >
+//       <SendIcon/>
+//     </button>
+//   )
+// };
 
 const App = (props: AppProps) => {
   const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, jobId } = props;
@@ -146,7 +149,9 @@ const App = (props: AppProps) => {
         Message={CustomMessage}
         maxNumberOfFiles={10}
         multipleUploads={true}
-        SendButton={props => <><SendButton {...props} /><CustomSendButton/></>}
+        // CustomSendButton for testing custom message
+        // SendButton={props => <><SendButton {...props} /><CustomSendButton/></>}
+        SendButton={props => <><SendButton {...props} /></>}
         ThreadHeader={MessagingThreadHeader}
         TypingIndicator={() => null}
         EmojiPicker={WrappedEmojiPicker}
