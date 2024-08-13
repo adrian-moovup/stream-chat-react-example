@@ -18,7 +18,6 @@ const jobId = urlParams.get('job_id')
 
 const userToConnect: UserResponse<StreamChatGenerics> = {
   id: user!,
-  name: user!,
   language: 'en',
   privacy_settings: {
     typing_indicators: {

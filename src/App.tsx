@@ -4,10 +4,10 @@ import {
   Channel,
   Chat,
   // DefaultStreamChatGenerics,
-  MessageSimple,
+  MessageSimple, Streami18n,
   // StreamMessage,
   useChannelActionContext,
-  useMessageContext
+  useMessageContext,
 } from 'stream-chat-react';
 import { EmojiPicker } from 'stream-chat-react/emojis';
 
@@ -31,6 +31,7 @@ import { useConnectUser, useChecklist, useMobileView, useUpdateAppHeightOnResize
 
 import type { StreamChatGenerics } from './types';
 // import { SendIcon } from './assets';
+import zhTranslation from './zh.json';
 
 init({ data });
 
@@ -122,6 +123,11 @@ const CustomMessage = () => {
 //   )
 // };
 
+const i18nInstance = new Streami18n({
+  language: 'zh',
+  translationsForLanguage: zhTranslation,
+});
+
 const App = (props: AppProps) => {
   const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, jobId } = props;
   const [isCreating, setIsCreating] = useState(false);
@@ -138,7 +144,7 @@ const App = (props: AppProps) => {
   }
 
   return (
-    <Chat client={chatClient} theme={`messaging ${themeClassName}`}>
+    <Chat client={chatClient} theme={`messaging ${themeClassName}`} i18nInstance={i18nInstance}>
       <MessagingSidebar
         channelListOptions={channelListOptions}
         onClick={toggleMobile}
@@ -157,9 +163,7 @@ const App = (props: AppProps) => {
         EmojiPicker={WrappedEmojiPicker}
         emojiSearchIndex={SearchIndex}
         enrichURLForPreview
-        EmptyPlaceholder={
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={jobId}/>
-        }
+        EmptyPlaceholder={<p>asdfasdf</p>}
       >
         {isCreating && (
           <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={jobId}/>
