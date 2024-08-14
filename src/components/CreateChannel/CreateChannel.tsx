@@ -22,7 +22,7 @@ const UserResult = ({ user }: { user: UserResponse<StreamChatGenerics> }) => (
 type Props = {
   onClose: () => void;
   toggleMobile: () => void;
-  jobId?: string,
+  dayworkId?: string,
 };
 
 const CreateChannel = (props: Props) => {
@@ -100,11 +100,11 @@ const CreateChannel = (props: Props) => {
 
     if (!selectedUsersIds.length || !client.userID) return;
 
-    const channelId = [props.jobId, ...selectedUsersIds, client.userID].join('_');
+    const channelId = [props.dayworkId, ...selectedUsersIds, client.userID].join('_');
 
     const conversation = client.channel('messaging', channelId, {
       members: [...selectedUsersIds, client.userID],
-      job_id: props.jobId,
+      daywork_id: props.dayworkId,
     });
 
     await conversation.watch();

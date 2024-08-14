@@ -37,7 +37,7 @@ init({ data });
 
 type AppProps = {
   apiKey: string;
-  jobId?: string;
+  dayWorkId?: string;
   userToConnect: { id: string; name?: string; image?: string };
   userToken: string | undefined;
   targetOrigin: string;
@@ -129,7 +129,7 @@ const i18nInstance = new Streami18n({
 });
 
 const App = (props: AppProps) => {
-  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, jobId } = props;
+  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, dayWorkId } = props;
   const [isCreating, setIsCreating] = useState(false);
 
   const chatClient = useConnectUser<StreamChatGenerics>(apiKey, userToConnect, userToken);
@@ -166,7 +166,7 @@ const App = (props: AppProps) => {
         EmptyPlaceholder={<p>asdfasdf</p>}
       >
         {isCreating && (
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} jobId={jobId}/>
+          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
         )}
         <GiphyContextProvider>
           <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>

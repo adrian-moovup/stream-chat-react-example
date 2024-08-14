@@ -80,6 +80,10 @@ const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
           </p>
           <p className='channel-preview__content-time'>{getTimeStamp(channel)}</p>
         </div>
+        <div className='channel-preview__job'>
+          <span className='channel-preview__content-job-title'>{channel.data?.daywork_title}</span>
+          <span>．{channel.data?.daywork_location}</span>
+        </div>
         <div className='channel-preview__content-message'>{latestMessage}</div>
       </div>
     </div>

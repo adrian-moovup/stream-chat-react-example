@@ -14,7 +14,7 @@ const apiKey = process.env.REACT_APP_STREAM_KEY || '8br4watad788';
 const user = process.env.REACT_APP_USER_ID || 'leia_organa';
 const userToken = process.env.REACT_APP_USER_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibGVpYV9vcmdhbmEifQ.IzwBuaYwX5dRvnDDnJN2AyW3wwfYwgQm3w-1RD4BLPU';
 const targetOrigin = (process.env.REACT_APP_TARGET_ORIGIN as string);
-const jobId = urlParams.get('job_id')
+const dayWorkId = urlParams.get('daywork_id')
 
 const userToConnect: UserResponse<StreamChatGenerics> = {
   id: user!,
@@ -33,7 +33,7 @@ root.render(
     <ThemeContextProvider targetOrigin={targetOrigin}>
       <App
         apiKey={apiKey!}
-        jobId={jobId || undefined}
+        dayWorkId={dayWorkId || undefined}
         userToConnect={userToConnect}
         userToken={userToken}
         targetOrigin={targetOrigin!}
@@ -41,7 +41,7 @@ root.render(
           options: {},
           filters: {
             type: 'messaging',
-            job_id: jobId || undefined,
+            daywork_id: dayWorkId || undefined,
             members: { $in: [user!] },
             // has_unread: true,
           },

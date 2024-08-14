@@ -35,8 +35,8 @@ const MessagingSidebar = ({
       <ChannelList
         {...channelListOptions}
         Preview={(props) => {
-          const channelJobId = props.channel.data?.job_id
-          const filterJobId = channelListOptions.filters?.job_id
+          const channelJobId = props.channel.data?.daywork_id
+          const filterJobId = channelListOptions.filters?.daywork_id
           if (filterJobId && channelJobId !== filterJobId) {
             return <></>
           }
