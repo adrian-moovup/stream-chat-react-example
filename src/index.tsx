@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import App from './App';
-import { getChannelListOptions } from './channelListOptions';
 import { ThemeContextProvider } from './context';
 import { UserResponse } from 'stream-chat';
 import { StreamChatGenerics } from './types';
@@ -15,6 +14,7 @@ const user = process.env.REACT_APP_USER_ID || 'leia_organa';
 const userToken = process.env.REACT_APP_USER_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibGVpYV9vcmdhbmEifQ.IzwBuaYwX5dRvnDDnJN2AyW3wwfYwgQm3w-1RD4BLPU';
 const targetOrigin = (process.env.REACT_APP_TARGET_ORIGIN as string);
 const dayWorkId = urlParams.get('daywork_id')
+const hasUnread = urlParams.get('has_unread')
 
 const userToConnect: UserResponse<StreamChatGenerics> = {
   id: user!,
@@ -34,6 +34,7 @@ root.render(
       <App
         apiKey={apiKey!}
         dayWorkId={dayWorkId || undefined}
+        hasUnread={hasUnread || undefined}
         userToConnect={userToConnect}
         userToken={userToken}
         targetOrigin={targetOrigin!}
@@ -43,7 +44,7 @@ root.render(
             type: 'messaging',
             daywork_id: dayWorkId || undefined,
             members: { $in: [user!] },
-            // has_unread: true,
+            has_unread: !!hasUnread || undefined,
           },
           sort: {
             last_message_at: -1,

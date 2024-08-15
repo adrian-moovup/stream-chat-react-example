@@ -58,8 +58,6 @@ const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
     ({ user }) => user?.id !== client.userID,
   );
 
-
-
   return (
     <div
       className={

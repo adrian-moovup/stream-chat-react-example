@@ -38,6 +38,7 @@ init({ data });
 type AppProps = {
   apiKey: string;
   dayWorkId?: string;
+  hasUnread?: string;
   userToConnect: { id: string; name?: string; image?: string };
   userToken: string | undefined;
   targetOrigin: string;

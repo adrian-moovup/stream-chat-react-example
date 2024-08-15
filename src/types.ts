@@ -5,6 +5,7 @@ export type ChannelType = {
   daywork_title?: string
   daywork_location?: string
   daywork_id?: string
+  has_unread?: string
 };
 export type CommandType = LiteralStringForUnion;
 export type EventType = {};
