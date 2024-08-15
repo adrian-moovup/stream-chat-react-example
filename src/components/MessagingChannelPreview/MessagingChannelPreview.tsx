@@ -51,7 +51,7 @@ type MessagingChannelPreviewProps = ChannelPreviewUIComponentProps<StreamChatGen
 };
 
 const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
-  const { channel, setActiveChannel, onClick, latestMessage, unread} = props;
+  const { channel, setActiveChannel, onClick, latestMessage, unread, active} = props;
   const { channel: activeChannel, client } = useChatContext<StreamChatGenerics>();
 
   const members = Object.values(channel.state.members).filter(
@@ -84,7 +84,8 @@ const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
         </div>
         <div className='channel-preview__content-message-wrapper'>
           <div className='channel-preview__content-message'>{latestMessage}</div>
-          {unread && unread > 0 ? <div className='channel-preview__unread'>{unread}</div> : <></>}
+          {/*If the chatroom is on focus (i.e: active), it should not show the unread badge*/}
+          {unread && unread > 0 && active === false ? <div className='channel-preview__unread'>{unread}</div> : <></>}
         </div>
       </div>
     </div>
