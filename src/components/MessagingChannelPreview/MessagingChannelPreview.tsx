@@ -51,7 +51,7 @@ type MessagingChannelPreviewProps = ChannelPreviewUIComponentProps<StreamChatGen
 };
 
 const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
-  const { channel, setActiveChannel, onClick, latestMessage, } = props;
+  const { channel, setActiveChannel, onClick, latestMessage, unread} = props;
   const { channel: activeChannel, client } = useChatContext<StreamChatGenerics>();
 
   const members = Object.values(channel.state.members).filter(
@@ -82,7 +82,10 @@ const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
           <span className='channel-preview__content-job-title'>{channel.data?.daywork_title}</span>
           <span>．{channel.data?.daywork_location}</span>
         </div>
-        <div className='channel-preview__content-message'>{latestMessage}</div>
+        <div className='channel-preview__content-message-wrapper'>
+          <div className='channel-preview__content-message'>{latestMessage}</div>
+          {unread && unread > 0 ? <div className='channel-preview__unread'>{unread}</div> : <></>}
+        </div>
       </div>
     </div>
   );
