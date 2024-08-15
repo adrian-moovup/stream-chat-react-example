@@ -164,7 +164,7 @@ const App = (props: AppProps) => {
         EmojiPicker={WrappedEmojiPicker}
         emojiSearchIndex={SearchIndex}
         enrichURLForPreview
-        EmptyPlaceholder={<p>asdfasdf</p>}
+        EmptyPlaceholder={<></>}
       >
         {isCreating && (
           <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
