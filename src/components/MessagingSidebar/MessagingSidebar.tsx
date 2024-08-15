@@ -42,9 +42,6 @@ const MessagingSidebar = ({
           if (filterJobId && channelJobId !== filterJobId) {
             return <></>
           }
-          if (hasUnread && hasUnreadCount === 0) {
-              return <></>
-          }
           return <MessagingChannelPreview {...props} onClick={onPreviewSelect} />
         }}
       />
