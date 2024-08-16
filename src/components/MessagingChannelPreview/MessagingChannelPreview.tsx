@@ -85,7 +85,7 @@ const MessagingChannelPreview = (props: MessagingChannelPreviewProps) => {
         <div className='channel-preview__content-message-wrapper'>
           <div className='channel-preview__content-message'>{latestMessage}</div>
           {/*If the chatroom is on focus (i.e: active), it should not show the unread badge*/}
-          {unread && unread > 0 && active === false ? <div className='channel-preview__unread'>{unread}</div> : <></>}
+          {!!unread && unread > 0 && !active && <div className='channel-preview__unread'>{unread}</div>}
         </div>
       </div>
     </div>
