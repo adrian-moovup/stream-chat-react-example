@@ -1,8 +1,7 @@
 import type { MouseEventHandler } from 'react';
-import { ChannelList, ChannelListProps } from 'stream-chat-react';
+import { ChannelList, ChannelListProps, useChatContext } from 'stream-chat-react';
 
 import { MessagingChannelListHeader, MessagingChannelPreview } from '../index';
-import { useThemeContext } from '../../context';
 import { StreamChatGenerics } from '../../types';
 
 type MessagingSidebarProps = {
@@ -20,11 +19,11 @@ const MessagingSidebar = ({
   // onCreateChannel,
   onPreviewSelect,
 }: MessagingSidebarProps) => {
-  const { themeClassName } = useThemeContext();
+  const { theme } = useChatContext<StreamChatGenerics>()
 
   return (
     <div
-      className={`str-chat messaging__sidebar ${themeClassName}`}
+      className={`str-chat messaging__sidebar ${theme}`}
       id='mobile-channel-list'
     >
       {/*<MessagingChannelListHeader onCreateChannel={onCreateChannel} />*/}

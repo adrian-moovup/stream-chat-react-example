@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 
 import App from './App';
-import { ThemeContextProvider } from './context';
 import { UserResponse } from 'stream-chat';
 import { StreamChatGenerics } from './types';
 
@@ -18,7 +17,6 @@ const urlUser = urlParams.get('user')
 const apiKey = urlAppKey || process.env.REACT_APP_STREAM_KEY || '8br4watad788';
 const user = urlUser || process.env.REACT_APP_USER_ID || 'leia_organa';
 const userToken = urlToken || process.env.REACT_APP_USER_TOKEN || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoibGVpYV9vcmdhbmEifQ.IzwBuaYwX5dRvnDDnJN2AyW3wwfYwgQm3w-1RD4BLPU';
-const targetOrigin = (process.env.REACT_APP_TARGET_ORIGIN as string);
 const dayWorkId = urlParams.get('daywork_id')
 const hasUnread = urlParams.get('has_unread')
 
@@ -36,14 +34,12 @@ const container = document.getElementById('root');
 const root = ReactDOM.createRoot(container!);
 root.render(
   <React.StrictMode>
-    <ThemeContextProvider targetOrigin={targetOrigin}>
       <App
         apiKey={apiKey!}
         dayWorkId={dayWorkId || undefined}
         hasUnread={hasUnread || undefined}
         userToConnect={userToConnect}
         userToken={userToken}
-        targetOrigin={targetOrigin!}
         channelListOptions={{
           options: {},
           filters: {
@@ -58,7 +54,6 @@ root.render(
           }
         }}
       />
-    </ThemeContextProvider>
   </React.StrictMode>,
 );
 

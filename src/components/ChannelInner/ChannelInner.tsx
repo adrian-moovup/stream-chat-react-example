@@ -5,7 +5,6 @@ import {encodeToMp3} from 'stream-chat-react/mp3-encoder';
 
 import {MessagingChannelHeader} from '../../components';
 import type {StreamChatGenerics} from '../../types';
-import {MessageInputProps} from "stream-chat-react/dist/components/MessageInput/MessageInput";
 
 export type ChannelInnerProps = {
   theme: string;

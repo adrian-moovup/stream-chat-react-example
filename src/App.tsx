@@ -25,8 +25,6 @@ import {
   SendButton,
 } from './components';
 
-import { useThemeContext } from './context';
-
 import { useConnectUser, useUpdateAppHeightOnResize } from './hooks';
 
 import type { StreamChatGenerics } from './types';
@@ -41,7 +39,6 @@ type AppProps = {
   hasUnread?: string;
   userToConnect: { id: string; name?: string; image?: string };
   userToken: string | undefined;
-  targetOrigin: string;
   channelListOptions: {
     options: ChannelOptions;
     filters: ChannelFilters;
@@ -50,9 +47,7 @@ type AppProps = {
 };
 
 const WrappedEmojiPicker = () => {
-  const { theme } = useThemeContext();
-
-  return <EmojiPicker pickerProps={{ theme }} />;
+  return <EmojiPicker />;
 };
 
 const CustomMessage = () => {
@@ -130,11 +125,11 @@ const i18nInstance = new Streami18n({
 });
 
 const App = (props: AppProps) => {
-  const { apiKey, userToConnect, userToken, targetOrigin, channelListOptions, dayWorkId } = props;
+  const { apiKey, userToConnect, userToken, channelListOptions, dayWorkId } = props;
   const [isCreating, setIsCreating] = useState(false);
 
   const chatClient = useConnectUser<StreamChatGenerics>(apiKey, userToConnect, userToken);
-  const { themeClassName } = useThemeContext();
+  const themeClassName = 'str-chat__theme-light'
 
   useUpdateAppHeightOnResize();
 
@@ -143,7 +138,7 @@ const App = (props: AppProps) => {
   }
 
   return (
-    <Chat client={chatClient} theme={`messaging ${themeClassName}`} i18nInstance={i18nInstance}>
+    <Chat client={chatClient} theme={themeClassName} i18nInstance={i18nInstance}>
       <MessagingSidebar
         channelListOptions={channelListOptions}
         onCreateChannel={() => setIsCreating(!isCreating)}
