@@ -8,12 +8,11 @@ import type {StreamChatGenerics} from '../../types';
 import {MessageInputProps} from "stream-chat-react/dist/components/MessageInput/MessageInput";
 
 export type ChannelInnerProps = {
-  toggleMobile: () => void;
   theme: string;
 };
 
 const ChannelInner = (props: ChannelInnerProps) => {
-  const { theme, toggleMobile } = props;
+  const { theme } = props;
 
   const { sendMessage } = useChannelActionContext<StreamChatGenerics>();
   const actions = ['delete', 'edit', 'flag', 'markUnread', 'mute', 'react', 'reply'];
@@ -21,7 +20,7 @@ const ChannelInner = (props: ChannelInnerProps) => {
   return (
     <>
       <Window>
-        <MessagingChannelHeader theme={theme} toggleMobile={toggleMobile} />
+        <MessagingChannelHeader theme={theme}  />
         <MessageList messageActions={actions} />
         <MessageInput
             focus

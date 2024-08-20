@@ -11,14 +11,12 @@ type MessagingSidebarProps = {
     sort: ChannelListProps<StreamChatGenerics>['sort'];
     options: ChannelListProps<StreamChatGenerics>['options'];
   };
-  onClick: MouseEventHandler;
   onCreateChannel: () => void;
   onPreviewSelect: MouseEventHandler;
 };
 
 const MessagingSidebar = ({
   channelListOptions,
-  onClick,
   // onCreateChannel,
   onPreviewSelect,
 }: MessagingSidebarProps) => {
@@ -28,7 +26,6 @@ const MessagingSidebar = ({
     <div
       className={`str-chat messaging__sidebar ${themeClassName}`}
       id='mobile-channel-list'
-      onClick={onClick}
     >
       {/*<MessagingChannelListHeader onCreateChannel={onCreateChannel} />*/}
       <MessagingChannelListHeader />

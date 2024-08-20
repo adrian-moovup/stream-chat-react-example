@@ -27,7 +27,7 @@ import {
 
 import { useThemeContext } from './context';
 
-import { useConnectUser, useMobileView, useUpdateAppHeightOnResize } from './hooks';
+import { useConnectUser, useUpdateAppHeightOnResize } from './hooks';
 
 import type { StreamChatGenerics } from './types';
 // import { SendIcon } from './assets';
@@ -134,7 +134,6 @@ const App = (props: AppProps) => {
   const [isCreating, setIsCreating] = useState(false);
 
   const chatClient = useConnectUser<StreamChatGenerics>(apiKey, userToConnect, userToken);
-  const toggleMobile = useMobileView();
   const { themeClassName } = useThemeContext();
 
   useUpdateAppHeightOnResize();
@@ -147,7 +146,6 @@ const App = (props: AppProps) => {
     <Chat client={chatClient} theme={`messaging ${themeClassName}`} i18nInstance={i18nInstance}>
       <MessagingSidebar
         channelListOptions={channelListOptions}
-        onClick={toggleMobile}
         onCreateChannel={() => setIsCreating(!isCreating)}
         onPreviewSelect={() => setIsCreating(false)}
       />
@@ -166,9 +164,9 @@ const App = (props: AppProps) => {
         EmptyPlaceholder={<></>}
       >
         {isCreating && (
-          <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
+          <CreateChannel onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
         )}
-        <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>
+        <ChannelInner theme={themeClassName} />
       </Channel>
     </Chat>
   );

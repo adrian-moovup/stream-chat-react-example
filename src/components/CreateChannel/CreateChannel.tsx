@@ -21,12 +21,11 @@ const UserResult = ({ user }: { user: UserResponse<StreamChatGenerics> }) => (
 
 type Props = {
   onClose: () => void;
-  toggleMobile: () => void;
   dayworkId?: string,
 };
 
 const CreateChannel = (props: Props) => {
-  const { onClose, toggleMobile } = props;
+  const { onClose } = props;
 
   const { client, setActiveChannel } = useChatContext<StreamChatGenerics>();
 
@@ -198,7 +197,7 @@ const CreateChannel = (props: Props) => {
               />
             </form>
           </div>
-          <div className='close-mobile-create' onClick={() => toggleMobile()}>
+          <div className='close-mobile-create' >
             <XButtonBackground />
           </div>
         </div>
