@@ -25,7 +25,7 @@ import {
   SendButton,
 } from './components';
 
-import { GiphyContextProvider, useThemeContext } from './context';
+import { useThemeContext } from './context';
 
 import { useConnectUser, useChecklist, useMobileView, useUpdateAppHeightOnResize } from './hooks';
 
@@ -169,9 +169,7 @@ const App = (props: AppProps) => {
         {isCreating && (
           <CreateChannel toggleMobile={toggleMobile} onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
         )}
-        <GiphyContextProvider>
-          <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>
-        </GiphyContextProvider>
+        <ChannelInner theme={themeClassName} toggleMobile={toggleMobile}/>
       </Channel>
     </Chat>
   );
