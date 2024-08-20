@@ -27,7 +27,7 @@ import {
 
 import { useThemeContext } from './context';
 
-import { useConnectUser, useChecklist, useMobileView, useUpdateAppHeightOnResize } from './hooks';
+import { useConnectUser, useMobileView, useUpdateAppHeightOnResize } from './hooks';
 
 import type { StreamChatGenerics } from './types';
 // import { SendIcon } from './assets';
@@ -137,7 +137,6 @@ const App = (props: AppProps) => {
   const toggleMobile = useMobileView();
   const { themeClassName } = useThemeContext();
 
-  useChecklist(chatClient, targetOrigin);
   useUpdateAppHeightOnResize();
 
   if (!chatClient) {
