@@ -9,10 +9,6 @@ import {
   useChannelActionContext,
   useMessageContext,
 } from 'stream-chat-react';
-import { EmojiPicker } from 'stream-chat-react/emojis';
-
-import data from '@emoji-mart/data';
-import { init, SearchIndex } from 'emoji-mart';
 
 import 'stream-chat-react/dist/css/v2/index.css';
 import './styles/index.css';
@@ -31,8 +27,6 @@ import type { StreamChatGenerics } from './types';
 // import { SendIcon } from './assets';
 import zhTranslation from './zh.json';
 
-init({ data });
-
 type AppProps = {
   apiKey: string;
   dayWorkId?: string;
@@ -44,10 +38,6 @@ type AppProps = {
     filters: ChannelFilters;
     sort: ChannelSort;
   };
-};
-
-const WrappedEmojiPicker = () => {
-  return <EmojiPicker />;
 };
 
 const CustomMessage = () => {
@@ -145,16 +135,10 @@ const App = (props: AppProps) => {
         onPreviewSelect={() => setIsCreating(false)}
       />
       <Channel
-        Message={CustomMessage}
+        // Message={CustomMessage}
         maxNumberOfFiles={10}
         multipleUploads={true}
-        // CustomSendButton for testing custom message
-        // SendButton={props => <><SendButton {...props} /><CustomSendButton/></>}
-        SendButton={props => <><SendButton {...props} /></>}
         ThreadHeader={MessagingThreadHeader}
-        TypingIndicator={() => null}
-        EmojiPicker={WrappedEmojiPicker}
-        emojiSearchIndex={SearchIndex}
         enrichURLForPreview
         EmptyPlaceholder={<></>}
       >

@@ -4,8 +4,8 @@ import {MessagingChannelHeader} from '../../components';
 
 const ChannelInner = () => {
   const { theme} = useChatContext()
-  const actions = ['delete', 'edit', 'flag', 'markUnread', 'mute', 'react', 'reply'];
-
+  // const actions = ['delete', 'edit', 'flag', 'markUnread', 'mute', 'react', 'reply'];
+  const actions = ['delete', 'edit', 'markUnread'];
   return (
     <>
       <Window>
