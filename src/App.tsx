@@ -161,7 +161,7 @@ const App = (props: AppProps) => {
         {isCreating && (
           <CreateChannel onClose={() => setIsCreating(false)} dayworkId={dayWorkId}/>
         )}
-        <ChannelInner theme={themeClassName} />
+        <ChannelInner />
       </Channel>
     </Chat>
   );
